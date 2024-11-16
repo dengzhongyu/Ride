@@ -1,4 +1,7 @@
 
+## 环境配置
+#### 下载代码 & pod install
+
 ## 实现逻辑：
 #### 1、使用 UIViewControllerRepresentable 将 GMSMapView 嵌入 SwiftUI 中
 #### 2、使用 LocationManager 获取并管理当前位置。
