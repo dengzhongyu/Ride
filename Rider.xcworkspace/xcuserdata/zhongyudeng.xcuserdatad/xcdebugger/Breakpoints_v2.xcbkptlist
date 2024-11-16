@@ -20,6 +20,21 @@
             landmarkType = "24">
             <Locations>
                <Location
+                  uuid = "5F351D50-ADBB-47FD-8574-13929B6EE6F0 - 714acb5a2acb993b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Rider.ContentView.body.getter : some"
+                  moduleName = "Rider"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhongyudeng/Documents/dengzhongyu/Code/Rider/Rider/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "994">
+               </Location>
+               <Location
                   uuid = "5F351D50-ADBB-47FD-8574-13929B6EE6F0 - c24d4a45d77ced7"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -35,7 +50,7 @@
                   offsetFromSymbolStart = "92">
                </Location>
                <Location
-                  uuid = "5F351D50-ADBB-47FD-8574-13929B6EE6F0 - c24d4a45d77ced7"
+                  uuid = "5F351D50-ADBB-47FD-8574-13929B6EE6F0 - c24d4a45d77c134"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -45,8 +60,23 @@
                   urlString = "file:///Users/zhongyudeng/Documents/dengzhongyu/Code/Rider/Rider/ContentView.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "5F351D50-ADBB-47FD-8574-13929B6EE6F0 - c24d4a45d77c134"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;__C.CLLocation&gt;) -&gt; () in Rider.ContentView.body.getter : some"
+                  moduleName = "Rider"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhongyudeng/Documents/dengzhongyu/Code/Rider/Rider/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
                   offsetFromSymbolStart = "142">
                </Location>
             </Locations>
@@ -55,47 +85,63 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "B5114C3C-C8CD-4A0F-B5E3-A1D899D92B7F"
+            uuid = "845FA97F-44DE-4001-8F63-CC86DBF73C72"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Rider/LocationManager.swift"
+            filePath = "Rider/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "init()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "calculateRoute(from:to:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "FD971612-E5CB-4350-B859-8CBD7242E275"
+            uuid = "59731427-6980-4D8B-AC09-5A47E24EC6B9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Rider/LocationManager.swift"
+            filePath = "Rider/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "locationManager(_:didUpdateLocations:)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "navigateAction()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2DBE9729-5595-4ADE-A6F6-133076C4E57D"
+            uuid = "6EC2A8DB-4BCC-4E17-B510-00CC970C487A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rider/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "clearMap()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "95D8AB67-397E-4028-81EB-CDEC76256774"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Rider/GoogleMapView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "updateUIViewController(_:context:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -103,16 +149,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "17B90B9E-E96E-450A-B1E1-52B8AD496CCD"
+            uuid = "ACDA2231-1DFF-4260-B9AD-94643EB179DC"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Rider/GoogleMapView.swift"
+            filePath = "Rider/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "updateUIViewController(_:context:)"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "navigateAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38900749-F86F-4B23-A6F0-45C2A196D826"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Rider/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "updateRideInfo(newLocation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

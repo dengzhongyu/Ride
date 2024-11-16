@@ -10,7 +10,7 @@ import CoreLocation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let locationManager = CLLocationManager()
-    @Published var currentLocation: CLLocation?
+    @Published var currentLocation: CLLocation? = CLLocation(latitude: 37.785834, longitude: -122.406417)
 
     override init() {
         super.init()

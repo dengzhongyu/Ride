@@ -27,6 +27,12 @@ struct GoogleMapView: UIViewControllerRepresentable {
             newMarker.map = mapView
             currentMarker = newMarker
         }
+        
+        func removeMarker() {
+            // 移除当前的 marker
+            currentMarker?.map = nil
+            currentMarker = nil
+        }
     }
 
     class Coordinator: NSObject, GMSMapViewDelegate {
@@ -85,6 +91,10 @@ struct GoogleMapView: UIViewControllerRepresentable {
             polyline.strokeWidth = 4.0
             polyline.map = mapView
         }
+    }
+    
+    func removeMarker() {
+        MarkerManager().removeMarker()
     }
 }
 
