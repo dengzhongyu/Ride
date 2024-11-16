@@ -11,6 +11,6 @@
 #### 1、可真机验证骑行路径做实时更新逻辑，可优化更新策略，避免频繁调用google map接口
 
 ## 运行结果：
-![Image tex](./result/start.png)
-![Image tex](./result/riding1.png)
-![Image tex](./result/riding2.png)
+![Image text](./result/start.png)
+![Image text](./result/riding1.png)
+![Image text](./result/riding2.png)
