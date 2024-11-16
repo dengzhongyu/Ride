@@ -7,18 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B2CF3DA95D73C439CAE89760 /* Pods_Rider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7956BE703308A289D57443A /* Pods_Rider.framework */; };
 		B7CDD2DD2CE812CB00F7F64A /* RiderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CDD2DC2CE812CB00F7F64A /* RiderApp.swift */; };
 		B7CDD2DF2CE812CB00F7F64A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CDD2DE2CE812CB00F7F64A /* ContentView.swift */; };
 		B7CDD2E12CE812CD00F7F64A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CDD2E02CE812CD00F7F64A /* Assets.xcassets */; };
 		B7CDD2E42CE812CD00F7F64A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7CDD2E32CE812CD00F7F64A /* Preview Assets.xcassets */; };
+		B7CDD2EB2CE8206C00F7F64A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7CDD2EA2CE8206C00F7F64A /* CoreLocation.framework */; };
+		B7CDD2ED2CE8243F00F7F64A /* GoogleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CDD2EC2CE8243F00F7F64A /* GoogleMapView.swift */; };
+		B7CDD2EF2CE8267700F7F64A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CDD2EE2CE8267700F7F64A /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		96F22F2049689E1630CC007A /* Pods-Rider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rider.release.xcconfig"; path = "Target Support Files/Pods-Rider/Pods-Rider.release.xcconfig"; sourceTree = "<group>"; };
+		B7956BE703308A289D57443A /* Pods_Rider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CDD2D92CE812CB00F7F64A /* Rider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7CDD2DC2CE812CB00F7F64A /* RiderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiderApp.swift; sourceTree = "<group>"; };
 		B7CDD2DE2CE812CB00F7F64A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B7CDD2E02CE812CD00F7F64A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B7CDD2E32CE812CD00F7F64A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B7CDD2EA2CE8206C00F7F64A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B7CDD2EC2CE8243F00F7F64A /* GoogleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapView.swift; sourceTree = "<group>"; };
+		B7CDD2EE2CE8267700F7F64A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		B7CDD2F02CE828E400F7F64A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BF87F5C0D282AD584441B2E1 /* Pods-Rider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rider.debug.xcconfig"; path = "Target Support Files/Pods-Rider/Pods-Rider.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,17 +37,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7CDD2EB2CE8206C00F7F64A /* CoreLocation.framework in Frameworks */,
+				B2CF3DA95D73C439CAE89760 /* Pods_Rider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A1F5696B60706E9265B32977 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7CDD2EA2CE8206C00F7F64A /* CoreLocation.framework */,
+				B7956BE703308A289D57443A /* Pods_Rider.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B7CDD2D02CE812CB00F7F64A = {
 			isa = PBXGroup;
 			children = (
 				B7CDD2DB2CE812CB00F7F64A /* Rider */,
 				B7CDD2DA2CE812CB00F7F64A /* Products */,
+				BDD0F0895F1BCC3482027CAD /* Pods */,
+				A1F5696B60706E9265B32977 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,10 +75,13 @@
 		B7CDD2DB2CE812CB00F7F64A /* Rider */ = {
 			isa = PBXGroup;
 			children = (
+				B7CDD2F02CE828E400F7F64A /* Info.plist */,
 				B7CDD2DC2CE812CB00F7F64A /* RiderApp.swift */,
 				B7CDD2DE2CE812CB00F7F64A /* ContentView.swift */,
 				B7CDD2E02CE812CD00F7F64A /* Assets.xcassets */,
 				B7CDD2E22CE812CD00F7F64A /* Preview Content */,
+				B7CDD2EC2CE8243F00F7F64A /* GoogleMapView.swift */,
+				B7CDD2EE2CE8267700F7F64A /* LocationManager.swift */,
 			);
 			path = Rider;
 			sourceTree = "<group>";
@@ -67,6 +94,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		BDD0F0895F1BCC3482027CAD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF87F5C0D282AD584441B2E1 /* Pods-Rider.debug.xcconfig */,
+				96F22F2049689E1630CC007A /* Pods-Rider.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7CDD2E72CE812CD00F7F64A /* Build configuration list for PBXNativeTarget "Rider" */;
 			buildPhases = (
+				5DDA4952DE9DCCE63E1747BF /* [CP] Check Pods Manifest.lock */,
 				B7CDD2D52CE812CB00F7F64A /* Sources */,
 				B7CDD2D62CE812CB00F7F64A /* Frameworks */,
 				B7CDD2D72CE812CB00F7F64A /* Resources */,
+				8F7141FD7C8A6D826CB68C60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,11 +170,55 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5DDA4952DE9DCCE63E1747BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Rider-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F7141FD7C8A6D826CB68C60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rider/Pods-Rider-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Rider/Pods-Rider-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Rider/Pods-Rider-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B7CDD2D52CE812CB00F7F64A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7CDD2EF2CE8267700F7F64A /* LocationManager.swift in Sources */,
+				B7CDD2ED2CE8243F00F7F64A /* GoogleMapView.swift in Sources */,
 				B7CDD2DF2CE812CB00F7F64A /* ContentView.swift in Sources */,
 				B7CDD2DD2CE812CB00F7F64A /* RiderApp.swift in Sources */,
 			);
@@ -266,6 +348,7 @@
 		};
 		B7CDD2E82CE812CD00F7F64A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF87F5C0D282AD584441B2E1 /* Pods-Rider.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -273,7 +356,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rider/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rider/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "我们需要您一直共享位置，以提供持续的骑行服务";
+				INFOPLIST_KEY_NSLocationUsageDescription = "我们需要您的位置来提供更好的骑行服务";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -294,6 +381,7 @@
 		};
 		B7CDD2E92CE812CD00F7F64A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96F22F2049689E1630CC007A /* Pods-Rider.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -301,7 +389,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rider/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rider/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "我们需要您一直共享位置，以提供持续的骑行服务";
+				INFOPLIST_KEY_NSLocationUsageDescription = "我们需要您的位置来提供更好的骑行服务";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
