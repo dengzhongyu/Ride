@@ -12,8 +12,9 @@
 
 ## 优化点
 #### 1、可真机验证骑行路径做实时更新逻辑，可优化更新策略，避免频繁调用google map接口
+#### 2、测试中使用模拟器虚拟定位更新位置信息，与实际骑行路线有差异
 
-## 运行结果：
+## 效果图：
 ![Image text](./result/start.png)
 ![Image text](./result/riding1.png)
 ![Image text](./result/riding2.png)
