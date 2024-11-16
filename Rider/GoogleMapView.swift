@@ -17,21 +17,22 @@ struct GoogleMapView: UIViewControllerRepresentable {
 
     private class MarkerManager {
         var currentMarker: GMSMarker?
+        var destinationMarker: GMSMarker?
 
         func setMarker(at coordinate: CLLocationCoordinate2D, on mapView: GMSMapView) {
             // 移除旧的 marker
-            currentMarker?.map = nil
+            destinationMarker?.map = nil
             // 创建新的 marker
             let newMarker = GMSMarker(position: coordinate)
             newMarker.title = "目的地"
             newMarker.map = mapView
-            currentMarker = newMarker
+            destinationMarker = newMarker
         }
         
         func removeMarker() {
             // 移除当前的 marker
-            currentMarker?.map = nil
-            currentMarker = nil
+            destinationMarker?.map = nil
+            destinationMarker = nil
         }
     }
 
@@ -75,7 +76,7 @@ struct GoogleMapView: UIViewControllerRepresentable {
         // 更新当前摄像头位置
         if let currentLocation = currentLocation {
             let camera = GMSCameraPosition.camera(withLatitude: currentLocation.coordinate.latitude,
-                                                  longitude: currentLocation.coordinate.longitude, zoom: 14)
+                                                  longitude: currentLocation.coordinate.longitude, zoom: 15)
             mapView.animate(to: camera)
         }
 
@@ -91,10 +92,6 @@ struct GoogleMapView: UIViewControllerRepresentable {
             polyline.strokeWidth = 4.0
             polyline.map = mapView
         }
-    }
-    
-    func removeMarker() {
-        MarkerManager().removeMarker()
     }
 }
 

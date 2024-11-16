@@ -9,6 +9,9 @@ import SwiftUI
 import GoogleMaps
 import CoreLocation
 
+let MI_TRANSFORM: Double = 0.000621
+let API_Key: String = "AIzaSyBGw2-b0jxmpvTVmTCz5lQSq-dvtw24Rvc"
+
 struct ContentView: View {
     @StateObject private var locationManager = LocationManager()
     @State private var selectedDestination: CLLocationCoordinate2D?
@@ -19,7 +22,6 @@ struct ContentView: View {
     @State private var remainingDistance: String = ""
     @State private var estimatedTime: String = ""
     @State private var isNavigating = false // 是否正在导航
-    var mapView: GoogleMapView?
 
     var body: some View {
         VStack {
@@ -58,22 +60,37 @@ struct ContentView: View {
     }
     
     func clearMap() {
-            // 清除规划路线
-            plannedRoutePolyline?.map = nil
-            plannedRoutePolyline = nil
+        // 清除规划路线
+        let mapView = plannedRoutePolyline?.map;
+        plannedRoutePolyline?.map = nil
+        plannedRoutePolyline = nil
 
-            // 清空实际路径
-            actualPath = GMSMutablePath()
+        // 清空实际路径
+        actualPath = GMSMutablePath()
 
-            // 清空目的地
-            selectedDestination = nil
+        // 清空目的地
+        selectedDestination = nil
 
-            // 更新信息文本
-            infoLabelText = "选择目的地"
+        // 更新信息文本
+        infoLabelText = "选择目的地"
+    
+        // 清除目的地标记
+        mapView?.clear()
         
-            // 清除目的地标记
-            mapView.removeMarker() // 让 GoogleMapView 清除标记
+    }
+
+    // 计算实际骑行距离
+    func calculateActualDistance() -> Double {
+        var distance: Double = 0.0
+        for i in 0..<actualPath.count() - 1 {
+            let start = actualPath.coordinate(at: i)
+            let end = actualPath.coordinate(at: i + 1)
+            let startLocation = CLLocation(latitude: start.latitude, longitude: start.longitude)
+            let endLocation = CLLocation(latitude: end.latitude, longitude: end.longitude)
+            distance += startLocation.distance(from: endLocation)
         }
+        return distance
+    }
     
     func navigateAction() {
         
@@ -96,7 +113,7 @@ struct ContentView: View {
     func calculateRoute(from start: CLLocationCoordinate2D, to end: CLLocationCoordinate2D) {
         let origin = "\(start.latitude),\(start.longitude)"
         let destination = "\(end.latitude),\(end.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=bicycling&key=AIzaSyBGw2-b0jxmpvTVmTCz5lQSq-dvtw24Rvc"
+        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=bicycling&key=\(API_Key)"
 
         URLSession.shared.dataTask(with: URL(string: url)!) { data, _, error in
             guard error == nil, let data = data else { return }
@@ -118,7 +135,7 @@ struct ContentView: View {
                                let value = duration["text"] as? String {
                                 self.estimatedTime = value
                             }
-                            self.updateRideInfo(newLocation: self.locationManager.currentLocation ?? CLLocation(latitude: 37.785834, longitude: -122.406417))
+                            self.updateRideInfo(newLocation: self.locationManager.currentLocation!)
                         }
                     }
                 }
@@ -141,12 +158,13 @@ struct ContentView: View {
     func updateRideInfo(newLocation: CLLocation) {
         // 记录实际路径
         actualPath.add(newLocation.coordinate)
-
+        let ridedDis = calculateActualDistance() * MI_TRANSFORM
 
         // 更新信息文本
         infoLabelText = """
-        剩余距离：\(remainingDistance)
-        预计时间：\(estimatedTime)
+            已骑行：\((ridedDis * 100).rounded() / 100) mi
+            剩余距离：\(remainingDistance)
+            预计时间：\(estimatedTime)
         """
     }
 }
