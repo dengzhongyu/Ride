@@ -16,7 +16,6 @@ struct GoogleMapView: UIViewControllerRepresentable {
     @Binding var isNavigating: Bool
 
     private class MarkerManager {
-        var currentMarker: GMSMarker?
         var destinationMarker: GMSMarker?
 
         func setMarker(at coordinate: CLLocationCoordinate2D, on mapView: GMSMapView) {

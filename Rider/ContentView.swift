@@ -46,13 +46,13 @@ struct ContentView: View {
             }
             .padding()
         }
-        .onChange(of: locationManager.currentLocation) { newLocation in
+        .onChange(of: locationManager.currentLocation) { oldLocation, newLocation in
             if let newLocation = newLocation, isNavigating {
                 updateRoute(from: newLocation.coordinate)
                 updateRideInfo(newLocation: newLocation)
             }
         }
-        .onChange(of: isNavigating) { newValue in
+        .onChange(of: isNavigating) { oldValue, newValue in
                     if !newValue {
                         clearMap()
                     }
@@ -92,6 +92,13 @@ struct ContentView: View {
         return distance
     }
     
+    // 是否靠近目的地
+    ///   - threshold: 距离阈值（默认 10 米）
+    func areLocationsWithinDistance(location1: CLLocation, location2: CLLocation, threshold: Double = 10.0) -> Bool {
+        let distance = location1.distance(from: location2)
+        return distance <= threshold
+    }
+    
     func navigateAction() {
         
         guard let destination = selectedDestination, let startLocation = locationManager.currentLocation else {
@@ -113,30 +120,45 @@ struct ContentView: View {
     func calculateRoute(from start: CLLocationCoordinate2D, to end: CLLocationCoordinate2D) {
         let origin = "\(start.latitude),\(start.longitude)"
         let destination = "\(end.latitude),\(end.longitude)"
-        let url = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=bicycling&key=\(API_Key)"
+        let urlString = "https://maps.googleapis.com/maps/api/directions/json?origin=\(origin)&destination=\(destination)&mode=bicycling&key=\(API_Key)"
+        print("calculate route:\(urlString)")
+        
+        guard let url = URL(string: urlString) else {
+            print("Error: Invalid URL")
+            return
+        }
 
-        URLSession.shared.dataTask(with: URL(string: url)!) { data, _, error in
-            guard error == nil, let data = data else { return }
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Error fetching route: \(error)")
+                return
+            }
+
+            guard let data = data else {
+                print("Error: No data received")
+                return
+            }
+
             do {
+                // 解析 JSON 数据
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                if let routes = json["routes"] as? [[String: Any]], let route = routes.first {
-                    if let overviewPolyline = route["overview_polyline"] as? [String: Any],
-                       let points = overviewPolyline["points"] as? String {
-                        DispatchQueue.main.async {
-                            self.drawPlannedRoute(from: points)
-                            print("route info: \(route)")
-                            if let legs = route["legs"] as? [[String: Any]], let leg = legs.first,
-                               let distance = leg["distance"] as? [String: Any],
-                               let value = distance["text"] as? String {
-                                self.remainingDistance = value
-                            }
-                            if let legs = route["legs"] as? [[String: Any]], let leg = legs.first,
-                               let duration = leg["duration"] as? [String: Any],
-                               let value = duration["text"] as? String {
-                                self.estimatedTime = value
-                            }
-                            self.updateRideInfo(newLocation: self.locationManager.currentLocation!)
-                        }
+                guard let routes = json["routes"] as? [[String: Any]], let route = routes.first else {
+                    print("Error: No routes found")
+                    return
+                }
+
+                // 提取折线数据
+                if let overviewPolyline = route["overview_polyline"] as? [String: Any],
+                   let points = overviewPolyline["points"] as? String {
+                    DispatchQueue.main.async {
+                        self.drawPlannedRoute(from: points)
+                    }
+                }
+
+                // 提取距离和时间信息
+                if let legs = route["legs"] as? [[String: Any]], let leg = legs.first {
+                    DispatchQueue.main.async {
+                        self.extractLegInfo(leg: leg)
                     }
                 }
             } catch {
@@ -145,13 +167,35 @@ struct ContentView: View {
         }.resume()
     }
 
+    // 提取并更新距离和时间信息
+    private func extractLegInfo(leg: [String: Any]) {
+        if let distance = leg["distance"] as? [String: Any],
+           let distanceText = distance["text"] as? String {
+            self.remainingDistance = distanceText
+        } else {
+            print("Error: Distance information missing")
+        }
+
+        if let duration = leg["duration"] as? [String: Any],
+           let durationText = duration["text"] as? String {
+            self.estimatedTime = durationText
+        } else {
+            print("Error: Duration information missing")
+        }
+
+        // 更新实时骑行信息
+        if let currentLocation = self.locationManager.currentLocation {
+            self.updateRideInfo(newLocation: currentLocation)
+        }
+    }
+
+
     func drawPlannedRoute(from encodedPath: String) {
         if let path = GMSPath(fromEncodedPath: encodedPath) {
             plannedRoutePolyline?.map = nil // 清除旧路线
             plannedRoutePolyline = GMSPolyline(path: path)
             plannedRoutePolyline?.strokeColor = .blue
             plannedRoutePolyline?.strokeWidth = 4.0
-            plannedRoutePolyline?.map = nil // Reset to nil
         }
     }
 
@@ -159,9 +203,11 @@ struct ContentView: View {
         // 记录实际路径
         actualPath.add(newLocation.coordinate)
         let ridedDis = calculateActualDistance() * MI_TRANSFORM
-
+        
+        let uponDestionDes = areLocationsWithinDistance(location1: newLocation, location2: CLLocation(latitude: selectedDestination!.latitude, longitude: selectedDestination!.longitude)) ? "临近目的地,欢迎下次使用" : ""
         // 更新信息文本
         infoLabelText = """
+            \(uponDestionDes)
             已骑行：\((ridedDis * 100).rounded() / 100) mi
             剩余距离：\(remainingDistance)
             预计时间：\(estimatedTime)
