@@ -16,7 +16,5 @@
 #### 3、用户体验优化：临近目的地时可提升提示体验，同时将实际骑行路线转换为图片形式，生成定制化的骑行结果页，展示路线图并附带本次骑行的核心数据。
 
 ## 效果图：
-#### （红色是目的地、蓝色是当前路线、绿色为骑行路径）
-![Image text](./result/start.png)
-![Image text](./result/riding1.png)
-![Image text](./result/riding2.png)
+#### （地图上红点是目的地、蓝色是当前路线、绿色为骑行路径）
+![Image text](./result/start.png) ![Image text](./result/riding1.png) ![Image text](./result/riding2.png)
